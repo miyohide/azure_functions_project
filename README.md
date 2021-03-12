@@ -11,6 +11,12 @@
 - nodejs v14.15.5
 - func 3.0.3388
 
+## 全体概要や引数などのオブジェクトについて
+
+以下のドキュメントに纏まっている。
+
+- [Azure Functions の JavaScript 開発者向けガイド](https://docs.microsoft.com/ja-jp/azure/azure-functions/functions-reference-node?tabs=v2)
+
 ## `function.json`について
 
 `function.json`はトリガーや出力の定義をする。詳細は以下に書かれている。
