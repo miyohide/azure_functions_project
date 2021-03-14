@@ -178,3 +178,11 @@ Functions in miyohidefuncapp1:
 ```
 
 `Invoke url`に`?code=`からはじまる長い文字列がついているのは、[関数のアクセスキー](https://docs.microsoft.com/ja-jp/azure/azure-functions/functions-bindings-http-webhook-trigger?tabs=javascript#authorization-keys)という機能がついているため。ローカルではこの値にかかわらずアクセスできるが、Azureに送信したアプリを動かすにはこの`code`の値が一致していないと動かない（401エラーが出る）。
+
+# テストを書く
+
+Azure Functionsにおけるテストの書き方については、[Azure Functions のコードをテストするための戦略](https://docs.microsoft.com/ja-jp/azure/azure-functions/functions-test-a-function)に記述がある。
+
+上記のドキュメントは、JavaScriptの例でTypeScriptはまた違う気がしたので、他の資料を探す。
+
+[TypeScript Deep Dive日本語版のJest](https://typescript-jp.gitbook.io/deep-dive/intro-1/jest)の記事を参考にする。
