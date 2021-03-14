@@ -1,5 +1,5 @@
-import httpTrigger from "./index";
-const context = require("../__tests__/defaultContext");
+import httpTrigger from "../../HttpExample/index";
+const context = require("defaultContext");
 
 test("Http trigger should return known text", async () => {
     const request = {
