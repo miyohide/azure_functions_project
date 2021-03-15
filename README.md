@@ -179,6 +179,27 @@ Functions in miyohidefuncapp1:
 
 `Invoke url`に`?code=`からはじまる長い文字列がついているのは、[関数のアクセスキー](https://docs.microsoft.com/ja-jp/azure/azure-functions/functions-bindings-http-webhook-trigger?tabs=javascript#authorization-keys)という機能がついているため。ローカルではこの値にかかわらずアクセスできるが、Azureに送信したアプリを動かすにはこの`code`の値が一致していないと動かない（401エラーが出る）。
 
+# ログを見る
+
+Azure Functionsを作成したらそれに紐づいてApplication Insightsも作られているので、いちいち無効化してなければログは見られる。
+
+クエリのところで何を入れれば良いかがよく分からなかったんだけれども、`traces`にアプリで`context.log`の内容が見れた。
+
+出力される項目がたくさんあるので、見たい項目を絞りたい場合は`project`で見たい項目だけを指定すれば良い。
+
+```
+traces
+| project timestamp, message, operation_id
+```
+
+ここでは日時とメッセージのほか`operation_id`というのを指定。これが同じものは同じリクエストでの処理っぽい。
+
+`requests`の`duration`でその関数の実行時間が分かるみたい。今回はNode.jsで動かしたんだけれども、20分ぐらい処理がないと、次の処理に時間がかかる感じ。今回の例では、250ms以内で納まっていたものが、一気に4.6秒に跳ね上がった。おそらくこの内容に該当している。
+
+[Understanding serverless cold start](https://azure.microsoft.com/ja-jp/blog/understanding-serverless-cold-start/)
+
+今回はNode.jsだったんだけれども、Javaならどれぐらいかかるのか、Linuxならどうなのかを実験したい。
+
 # テストを書く
 
 Azure Functionsにおけるテストの書き方については、[Azure Functions のコードをテストするための戦略](https://docs.microsoft.com/ja-jp/azure/azure-functions/functions-test-a-function)に記述がある。
