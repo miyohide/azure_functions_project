@@ -1,0 +1,33 @@
+plugins {
+    id "com.microsoft.azure.azurefunctions" version "1.5.1"
+}
+apply plugin: "java"
+apply plugin: "com.microsoft.azure.azurefunctions"
+
+group "com.github.miyohide.functions"
+version "0.0.1"
+
+sourceCompatibility = "11"
+targetCompatibility = "11"
+
+compileJava.options.encoding = "UTF-8"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.springframework.cloud:spring-cloud-function-adapter-azure:3.1.2"
+}
+
+azurefunctions {
+    resourceGroup = 'java-functions-group'
+    appName = 'azure-functions-sample'
+    pricingTier = 'Consumption'
+    region = 'japaneast'
+    runtime {
+      os = 'windows'
+      javaVersion = '8'
+    }
+    localDebug = "transport=dt_socket,server=y,suspend=n,address=5005"
+}
