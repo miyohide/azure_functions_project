@@ -1,6 +1,4 @@
 {
-  "name": "",
-  "version": "",
   "scripts": {
     "build": "tsc",
     "build:production": "npm run prestart && npm prune --production",
@@ -10,7 +8,6 @@
     "start": "npm-run-all --parallel start:host watch",
     "test": "jest"
   },
-  "description": "",
   "devDependencies": {
     "@azure/functions": "^1.0.1-beta1",
     "@types/jest": "^26.0.20",
