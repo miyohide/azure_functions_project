@@ -16,6 +16,9 @@ public class HelloHandler extends FunctionInvoker<User, Greeting> {
             ) {
         context.getLogger().info("Java HTTP trigger processed a request.");
 
+        // リクエストのBodyにnameデータがある場合はそのデータを返す、
+        // なければクエリパラメータでnameデータがある場合はそれを使ってUserを作って返す、
+        // それもなければWorldを値としてUserを使って返す
         User user = request.getBody()
                 .filter((u -> u.getName() != null))
                 .orElseGet(() -> new User(
