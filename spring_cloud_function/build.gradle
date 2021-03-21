@@ -27,5 +27,12 @@ test {
 }
 
 azurefunctions {
-    appName = "my-spring-function"
+    resourceGroup = 'sample_resource_group'
+    appName = "sample_app_name"
+    pricingTier = "Consumption"
+    region = "japaneast"
+    runtime {
+        os = "windows"
+        javaVersion = 11
+    }
 }
