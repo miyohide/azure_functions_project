@@ -1,5 +1,7 @@
 package com.github.miyohide;
 
+import com.github.miyohide.model.Greeting;
+import com.github.miyohide.model.User;
 import com.microsoft.azure.functions.*;
 import com.microsoft.azure.functions.annotation.AuthorizationLevel;
 import com.microsoft.azure.functions.annotation.FunctionName;

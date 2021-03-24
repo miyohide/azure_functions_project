@@ -1,5 +1,7 @@
 package com.github.miyohide;
 
+import com.github.miyohide.model.Greeting;
+import com.github.miyohide.model.User;
 import com.microsoft.azure.functions.ExecutionContext;
 import org.springframework.messaging.Message;
 import org.springframework.stereotype.Component;

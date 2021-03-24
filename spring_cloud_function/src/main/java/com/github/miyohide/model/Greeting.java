@@ -1,4 +1,4 @@
-package com.github.miyohide;
+package com.github.miyohide.model;
 
 public class Greeting {
     private String name;
