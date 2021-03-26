@@ -104,3 +104,44 @@ https://junit.org/junit5/docs/current/user-guide/#running-tests-build-gradle
 テストの書き方ついては以下を参照。
 
 http://www.ne.jp/asahi/hishidama/home/tech/java/junit/5/index.html
+
+# Timer Triggerを試す
+
+HTTP Triggerが実装できたので、次は定期的にジョブを実行するTimer Triggerを実装してみます。
+
+## APIを確認する
+
+HTTP Triggerの場合は、`@HttpTrigger`アノテーションを使って色々と書きましたが、 Timer Triggerの場合はどのように書くかを調べます。
+
+Azure Functions Java Libraryのマニュアルに書かれていました。
+
+https://docs.microsoft.com/ja-jp/java/api/com.microsoft.azure.functions.annotation.timertrigger?view=azure-java-stable
+
+今回はTimer Triggerですが、他のTriggerもAzure Functions Java Libraryの以下のページを見ると良いでしょう。
+
+https://docs.microsoft.com/ja-jp/java/api/com.microsoft.azure.functions.annotation?view=azure-java-stable
+
+## NCRON
+
+Timer Triggerの発生頻度を指定するにはNCronの書式で指定する必要があるのですが、毎回どうやって指定すればいいか忘れます。何か便利なツールないかなと探していたら、以下のオンラインツールを見つけました。
+
+https://ncrontab.swimburger.net/
+
+Web上でNCronの書式を入力したらいつジョブが実行されるかがすぐ計算してくれるツールです。
+
+## ローカル設定ファイルの編集
+
+Timer Triggerにおいては、実行するジョブの管理などのためにAzure Storageを利用する必要があります（[参考](https://docs.microsoft.com/ja-jp/azure/azure-functions/storage-considerations#storage-account-requirements)）ローカル環境においてはシミュレーターを使うことができます。
+具体的な設定は、`local.settings.json`ファイルにおいて、`"AzureWebJobsStorage"`の値を`"UseDevelopmentStorage=true"`を指定すればOKです。
+詳細は、以下のドキュメントを参照してください。
+
+https://docs.microsoft.com/ja-jp/azure/azure-functions/functions-run-local?tabs=macos%2Ccsharp%2Cbash#local-settings-file
+
+## Azure Storageのシミュレーター
+
+Azure Storageのシミュレーターとして、2021年3月時点ではAzuriteというものを使うようです。
+
+https://docs.microsoft.com/ja-jp/azure/storage/common/storage-use-azurite
+
+Node.jsやDockerを使ってインストールできます。私はDockerを使って環境を準備しました。
+
