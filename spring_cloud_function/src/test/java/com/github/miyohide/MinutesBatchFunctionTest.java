@@ -1,7 +1,5 @@
 package com.github.miyohide;
 
-import com.github.miyohide.model.Greeting;
-import com.github.miyohide.model.User;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
