@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(SpringExtension.class)
 @FunctionalSpringBootTest
-class FuncappTest {
+class HelloFunctionTest {
     @Autowired
     private FunctionCatalog catalog;
 
