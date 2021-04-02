@@ -119,3 +119,19 @@ COPY . /home/site/wwwroot/
 # 実行
 
 後は、`docker build`でDockerイメージを作成し、`docker run`で動かした後に`http://localhost:8080/api/Hello`にアクセスすると、`Hello Ruby World`という文字列がブラウザ上に表示されます。
+
+コンソールログには以下のような文字列が出力されていました。Sinatraが出力しているログが`fail`になっているのがちょっと気になりますが、とりあえず動いているようです。
+
+```
+      Host lock lease acquired by instance ID '000000000000000000000000714A9D2E'.
+info: Function.Hello[1]
+      Executing 'Functions.Hello' (Reason='This function was programmatically called via the host APIs.', Id=66a1a41b-2d0c-4277-90d3-a5ef3990be81)
+fail: Host.Function.Console[0]
+      127.0.0.1 - - [01/Apr/2021:11:40:05 +0000] "GET /api/Hello HTTP/1.1" 200 16 0.0004
+fail: Host.Function.Console[0]
+      127.0.0.1 - - [01/Apr/2021:11:40:05 UTC] "GET /api/Hello HTTP/1.1" 200 16
+fail: Host.Function.Console[0]
+      - -> /api/Hello
+info: Function.Hello[2]
+      Executed 'Functions.Hello' (Succeeded, Id=66a1a41b-2d0c-4277-90d3-a5ef3990be81, Duration=66ms)
+```
