@@ -1,6 +1,6 @@
 require 'sinatra'
 
-set :bind, '0.0.0.0'
+set :environment, :production
 set :port, ENV['FUNCTIONS_CUSTOMHANDLER_PORT']
 
 get '/api/Hello' do
