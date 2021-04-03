@@ -3,7 +3,9 @@ ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
     AzureFunctionsJobHost__Logging__Console__IsEnabled=true
 
 RUN apt update && \
-    apt install -y ruby
+    apt install -y \
+    ruby \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /home/site/wwwroot
 
