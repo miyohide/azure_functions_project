@@ -6,7 +6,7 @@ class MyApp < Sinatra::Base
     set :port, ENV['FUNCTIONS_CUSTOMHANDLER_PORT']
   end
   get '/api/Hello' do
-    'Hello Ruby World'
+    "Hello Ruby World at #{Time.now}"
   end
 
   run! if app_file === $0
