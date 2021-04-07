@@ -5,6 +5,11 @@ class MyApp < Sinatra::Base
     set :environment, :production
     set :port, ENV['FUNCTIONS_CUSTOMHANDLER_PORT']
   end
+
+  post '/TimerExample' do
+    'Timer Trigger Example'
+  end
+
   get '/api/Hello' do
     "Hello Ruby World at #{Time.now}"
   end
