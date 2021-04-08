@@ -2,12 +2,14 @@ require 'sinatra/base'
 
 class MyApp < Sinatra::Base
   configure do
+    enable :logging
     set :environment, :production
     set :port, ENV['FUNCTIONS_CUSTOMHANDLER_PORT']
   end
 
   post '/TimerExample' do
-    'Timer Trigger Example'
+    logger.info "aaaaaaaaaaaaaa"
+    logger.info "----- [#{request.env}]"
   end
 
   get '/api/Hello' do
