@@ -27,3 +27,5 @@ WORKDIR /home/site/wwwroot
 COPY Gemfile /home/site/wwwroot/
 RUN bundler install
 COPY . /home/site/wwwroot/
+
+ENV AzureWebJobsStorage="UseDevelopmentStorage=true;DevelopmentStorageProxyUri=http://host.docker.internal"
