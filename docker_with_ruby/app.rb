@@ -1,5 +1,5 @@
 require 'sinatra/base'
-
+require 'json'
 class MyApp < Sinatra::Base
   configure do
     enable :logging
@@ -8,8 +8,16 @@ class MyApp < Sinatra::Base
   end
 
   post '/TimerExample' do
-    logger.info "aaaaaaaaaaaaaa"
-    logger.info "----- [#{request.env}]"
+    logger.info "----- [#{JSON.parse(request.body.read)}]"
+    content_type :json
+    data = {
+      "Outputs" => {
+        "res" => { "body" => "abc" }
+      },
+      "Logs" => ["Log message1", "Log message2"],
+      "ReturnValue" => "hogehoge"
+    }
+    data.to_json
   end
 
   get '/api/Hello' do
