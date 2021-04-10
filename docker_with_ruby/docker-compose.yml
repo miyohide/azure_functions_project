@@ -12,4 +12,4 @@ services:
     depends_on:
       - storage
     environment:
-      - AzureWebJobsStorage="UseDevelopmentStorage=true;DevelopmentStorageProxyUri=http://storage"
+      - AzureWebJobsStorage
