@@ -8,15 +8,18 @@ class MyApp < Sinatra::Base
   end
 
   post '/TimerExample' do
-    logger.info "----- [#{JSON.parse(request.body.read)}]"
+    logger.info "----- Timer Schedule Start"
+    header_data = request.env
+    body_data = JSON.parse(request.body.read)
     content_type :json
     data = {
       "Outputs" => {
         "res" => { "body" => "abc" }
       },
-      "Logs" => ["Log message1", "Log message2"],
+      "Logs" => [header_data.to_s, body_data.to_s],
       "ReturnValue" => "hogehoge"
     }
+    logger.info "----- Timer Schedule End"
     data.to_json
   end
 
