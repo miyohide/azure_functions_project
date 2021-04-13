@@ -1,0 +1,13 @@
+version: '3'
+services:
+  storage:
+    image: mcr.microsoft.com/azure-storage/azurite
+    ports:
+      - "10000:10000"
+      - "10001:10001"
+  db:
+    image: postgres:13.2-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=hogehoge123
