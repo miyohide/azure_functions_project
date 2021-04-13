@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 
 public class Todo {
     @Id
-    private String id;
+    private Integer id;
     private String title;
     private boolean finished;
     private LocalDateTime createdAt;
@@ -17,11 +17,11 @@ public class Todo {
         this.createdAt = LocalDateTime.now();
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
