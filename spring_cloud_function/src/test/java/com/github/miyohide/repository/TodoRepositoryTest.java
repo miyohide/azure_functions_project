@@ -12,16 +12,15 @@ import static org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTest
 @DataJdbcTest
 @AutoConfigureTestDatabase(replace = NONE)
 public class TodoRepositoryTest {
-    @Autowired
-    TodoRepository todoRepository;
+  @Autowired TodoRepository todoRepository;
 
-    @Test
-    void testCrudMethods() {
-        String todo_title = "test todo";
-        Todo t = new Todo(todo_title);
-        assertEquals(1, todoRepository.count());
-        Todo savedTodo = todoRepository.save(t);
-        assertEquals(2, todoRepository.count());
-        assertEquals(todo_title, savedTodo.getTitle());
-    }
+  @Test
+  void testCrudMethods() {
+    String todo_title = "test todo";
+    Todo t = new Todo(todo_title);
+    assertEquals(1, todoRepository.count());
+    Todo savedTodo = todoRepository.save(t);
+    assertEquals(2, todoRepository.count());
+    assertEquals(todo_title, savedTodo.getTitle());
+  }
 }

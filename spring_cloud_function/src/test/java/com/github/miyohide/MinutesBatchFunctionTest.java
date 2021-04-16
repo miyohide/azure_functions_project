@@ -16,16 +16,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @ExtendWith(SpringExtension.class)
 @FunctionalSpringBootTest
 public class MinutesBatchFunctionTest {
-    @Autowired
-    private FunctionCatalog catalog;
+  @Autowired private FunctionCatalog catalog;
 
-    @Test
-    public void test() {
-        Function<Message<String>, String> func = catalog.lookup("minutesBatch");
-        Message<String> m = MessageBuilder.withPayload("xxxxxx")
-                .setHeader("executionContext", new TestExecutionContext("aaa"))
-                .build();
-        String s = func.apply(m);
-        assertEquals("SUCCESS", s);
-    }
+  @Test
+  public void test() {
+    Function<Message<String>, String> func = catalog.lookup("minutesBatch");
+    Message<String> m =
+        MessageBuilder.withPayload("xxxxxx")
+            .setHeader("executionContext", new TestExecutionContext("aaa"))
+            .build();
+    String s = func.apply(m);
+    assertEquals("SUCCESS", s);
+  }
 }

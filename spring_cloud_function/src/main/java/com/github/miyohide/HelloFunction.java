@@ -12,10 +12,10 @@ import java.util.function.Function;
 // @FunctionNameで指定した値と合わせる必要がある。
 @Component("hello")
 public class HelloFunction implements Function<Message<User>, Greeting> {
-    @Override
-    public Greeting apply(Message<User> m) {
-        ExecutionContext context = m.getHeaders().get("executionContext", ExecutionContext.class);
-        context.getLogger().info("HelloFunction.apply method");
-        return new Greeting(m.getPayload().getName() + "!!!");
-    }
+  @Override
+  public Greeting apply(Message<User> m) {
+    ExecutionContext context = m.getHeaders().get("executionContext", ExecutionContext.class);
+    context.getLogger().info("HelloFunction.apply method");
+    return new Greeting(m.getPayload().getName() + "!!!");
+  }
 }

@@ -10,16 +10,15 @@ import java.util.function.Function;
 
 @Component("minutesBatch")
 public class MinutesBatchFunction implements Function<Message<String>, String> {
-    @Autowired
-    TodoRepository todoRepository;
+  @Autowired TodoRepository todoRepository;
 
-    @Override
-    public String apply(Message<String> m) {
-        ExecutionContext context = m.getHeaders().get("executionContext", ExecutionContext.class);
-        context.getLogger().info("start minutes batch");
-        long c = todoRepository.count();
-        context.getLogger().info("count = [" + c + "]");
-        context.getLogger().info("end minutes batch");
-        return "SUCCESS";
-    }
+  @Override
+  public String apply(Message<String> m) {
+    ExecutionContext context = m.getHeaders().get("executionContext", ExecutionContext.class);
+    context.getLogger().info("start minutes batch");
+    long c = todoRepository.count();
+    context.getLogger().info("count = [" + c + "]");
+    context.getLogger().info("end minutes batch");
+    return "SUCCESS";
+  }
 }

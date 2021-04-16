@@ -18,18 +18,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @ExtendWith(SpringExtension.class)
 @FunctionalSpringBootTest
 class HelloFunctionTest {
-    @Autowired
-    private FunctionCatalog catalog;
+  @Autowired private FunctionCatalog catalog;
 
-    @Test
-    public void test() {
-        final String send_message = "foor bar";
-        Function<Message<User>, Greeting> func = catalog.lookup("hello");
-        Message<User> m = MessageBuilder.withPayload(new User(send_message))
-                .setHeader("executionContext", new TestExecutionContext("aaa"))
-                .build();
-        Greeting g = func.apply(m);
-        assertEquals(send_message + "!!!", g.getName());
-    }
-
+  @Test
+  public void test() {
+    final String send_message = "foor bar";
+    Function<Message<User>, Greeting> func = catalog.lookup("hello");
+    Message<User> m =
+        MessageBuilder.withPayload(new User(send_message))
+            .setHeader("executionContext", new TestExecutionContext("aaa"))
+            .build();
+    Greeting g = func.apply(m);
+    assertEquals(send_message + "!!!", g.getName());
+  }
 }
