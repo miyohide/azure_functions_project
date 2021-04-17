@@ -1,19 +1,34 @@
 plugins {
     id 'java'
+    id 'com.microsoft.azure.azurefunctions' version '1.5.1'
 }
 
-group 'org.example'
-version '1.0-SNAPSHOT'
+group 'com.github.miyohide'
+version '0.0.1'
+
+sourceCompatibility = '11'
+targetCompatibility = '11'
+
+compileJava.options.encoding = 'UTF-8'
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    implementation 'org.springframework.cloud:spring-cloud-function-adapter-azure:3.1.2'
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class':'com.github.miyohide.Funcapp'
+    }
 }
 
 test {
     useJUnitPlatform()
+}
+
+azurefunctions {
+    appName = 'sample_app_name'
 }
