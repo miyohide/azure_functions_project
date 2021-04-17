@@ -11,3 +11,5 @@ services:
       - "5432:5432"
     environment:
       - POSTGRES_PASSWORD=hogehoge123
+    volumes:
+      - ./docker_pg_init.sql:/docker-entrypoint-initdb.d/docker_postgres_init.sql
