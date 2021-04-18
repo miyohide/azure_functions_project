@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 public class HelloHandler extends FunctionInvoker<String, String> {
     @FunctionName("hello")
-    @StorageAccount("AzureWebJobsStorage")
+    @StorageAccount("OutputStorage")
     public HttpResponseMessage hello(
             @HttpTrigger(name = "req", methods = {HttpMethod.GET}, authLevel = AuthorizationLevel.ANONYMOUS)HttpRequestMessage<String> request,
             @BlobOutput(name = "target", path = "myblob/sample.txt") OutputBinding<String> outputItem,
