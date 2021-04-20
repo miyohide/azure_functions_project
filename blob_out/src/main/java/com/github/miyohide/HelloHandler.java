@@ -15,7 +15,7 @@ public class HelloHandler extends FunctionInvoker<String, String> {
             ExecutionContext context
             ) {
         context.getLogger().info("***** HTTP Trigger Start *****");
-        outputItem.setValue("[" + LocalDateTime.now() + "] This is sample txt.");
+        outputItem.setValue(handleRequest("input", context));
         context.getLogger().info("***** HTTP Trigger End *****");
         return request.createResponseBuilder(HttpStatus.OK)
                 .body("***** HTTP Trigger Response *****")
