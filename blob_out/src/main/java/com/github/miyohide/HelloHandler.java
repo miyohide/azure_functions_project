@@ -11,7 +11,7 @@ public class HelloHandler extends FunctionInvoker<String, String> {
     @StorageAccount("OutputStorage")
     public HttpResponseMessage hello(
             @HttpTrigger(name = "req", methods = {HttpMethod.GET}, authLevel = AuthorizationLevel.ANONYMOUS)HttpRequestMessage<String> request,
-            @BlobOutput(name = "target", path = "myblob/sample.txt") OutputBinding<String> outputItem,
+            @BlobOutput(name = "target", path = "myblob/{DateTime}-sample.txt") OutputBinding<String> outputItem,
             ExecutionContext context
             ) {
         context.getLogger().info("***** HTTP Trigger Start *****");
