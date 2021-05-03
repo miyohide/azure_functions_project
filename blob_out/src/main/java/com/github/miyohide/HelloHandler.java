@@ -10,7 +10,7 @@ public class HelloHandler extends FunctionInvoker<String, String> {
     @FunctionName("hello")
     @StorageAccount("OutputStorage")
     public HttpResponseMessage hello(
-            @HttpTrigger(name = "req", methods = {HttpMethod.GET}, authLevel = AuthorizationLevel.ANONYMOUS)HttpRequestMessage<String> request,
+            @HttpTrigger(name = "req", methods = {HttpMethod.GET}, authLevel = AuthorizationLevel.FUNCTION)HttpRequestMessage<String> request,
             @BlobOutput(name = "target", path = "myblob/{DateTime:yyyy}/{DateTime:MM}/{DateTime:dd}/{DateTime:hhmmss}-{rand-guid}-sample.txt") OutputBinding<String> outputItem,
             ExecutionContext context
             ) {
