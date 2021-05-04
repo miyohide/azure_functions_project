@@ -31,5 +31,12 @@ test {
 }
 
 azurefunctions {
-    appName = 'miyohide_image_resize'
+    resourceGroup = 'resource-group-name'
+    appName = 'azure-function-name'
+    pricingTier = 'Consumption'
+    region = 'japaneast'
+    runtime {
+        os = 'linux'
+        javaVersion = 11
+    }
 }
