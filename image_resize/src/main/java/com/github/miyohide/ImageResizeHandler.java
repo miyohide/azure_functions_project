@@ -5,7 +5,7 @@ import com.microsoft.azure.functions.OutputBinding;
 import com.microsoft.azure.functions.annotation.*;
 import org.springframework.cloud.function.adapter.azure.FunctionInvoker;
 
-public class ImageResizeHandler extends FunctionInvoker<EventSchema, Boolean> {
+public class ImageResizeHandler extends FunctionInvoker<ImageResizeFunctionArg, Boolean> {
     @FunctionName("ImageResize")
     @StorageAccount("ImageStorage")
     public boolean imageResizeHandler(
@@ -16,7 +16,8 @@ public class ImageResizeHandler extends FunctionInvoker<EventSchema, Boolean> {
             ) {
         context.getLogger().info("***** EventGrid Trigger Start *****");
         context.getLogger().info("----- Blob input data size = [" + content.length + "] -----");
-        handleRequest(event, context);
+        ImageResizeFunctionArg arg = new ImageResizeFunctionArg(event, content);
+        handleRequest(arg, context);
         context.getLogger().info("***** EventGrid Trigger End *****");
         return true;
     }
