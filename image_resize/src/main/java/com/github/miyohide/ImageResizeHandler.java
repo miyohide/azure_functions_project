@@ -15,7 +15,6 @@ public class ImageResizeHandler extends FunctionInvoker<ImageResizeFunctionArg, 
             final ExecutionContext context
             ) {
         context.getLogger().info("***** EventGrid Trigger Start *****");
-        context.getLogger().info("----- Blob input data size = [" + content.length + "] -----");
         ImageResizeFunctionArg arg = new ImageResizeFunctionArg(event, content);
         handleRequest(arg, context);
         context.getLogger().info("***** EventGrid Trigger End *****");
