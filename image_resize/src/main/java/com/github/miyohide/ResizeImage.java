@@ -14,6 +14,7 @@ public class ResizeImage {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         Thumbnails.of(image)
                 .scale(0.50)
+                .outputFormat("PNG")
                 .toOutputStream(out);
         return out.toByteArray();
     }
