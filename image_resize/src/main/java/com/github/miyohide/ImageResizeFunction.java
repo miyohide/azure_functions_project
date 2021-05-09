@@ -4,18 +4,22 @@ import com.microsoft.azure.functions.ExecutionContext;
 import org.springframework.messaging.Message;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
 import java.util.function.Function;
 
 @Component("ImageResize")
-public class ImageResizeFunction implements Function<Message<ImageResizeFunctionArg>, Boolean> {
+public class ImageResizeFunction implements Function<Message<ImageResizeFunctionArg>, byte[]> {
     @Override
-    public Boolean apply(Message<ImageResizeFunctionArg> m) {
+    public byte[] apply(Message<ImageResizeFunctionArg> m) {
+        byte[] r = null;
         ExecutionContext context = m.getHeaders().get("executionContext", ExecutionContext.class);
         ImageResizeFunctionArg arg = m.getPayload();
-        String url = arg.getEventSchema().data.get("url").toString();
-        context.getLogger().info("+++++ ImageResizeFunction url = [" + url + "] +++++");
-        int size = arg.getInput().length;
-        context.getLogger().info("+++++ ImageResizeFunction data size = [" + size + "] +++++");
-        return true;
+        EventSchema event = arg.getEventSchema();
+        try {
+            r = ResizeImage.resize(arg.getInput());
+        } catch (IOException e) {
+            context.getLogger().warning("画像変換処理に例外が発生しました。URL = [" + event.data.get("url") + "]");
+        }
+        return r;
     }
 }
