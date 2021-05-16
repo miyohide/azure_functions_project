@@ -1,17 +1,24 @@
 package com.github.miyohide;
 
 import com.microsoft.azure.functions.ExecutionContext;
-import com.microsoft.azure.functions.annotation.FunctionName;
-import com.microsoft.azure.functions.annotation.QueueTrigger;
+import com.microsoft.azure.functions.OutputBinding;
+import com.microsoft.azure.functions.annotation.*;
 import org.springframework.cloud.function.adapter.azure.FunctionInvoker;
+
+import java.io.IOException;
 
 public class ImageResizeHandler extends FunctionInvoker<byte[], byte[]> {
   @FunctionName("ImageResize")
-  public void imageResizeHandler(
+  @StorageAccount("MyStorageAccount")
+  @BlobOutput(name = "target", path = "thumbnails/s-{queueTrigger}", dataType = "binary")
+  public byte[] imageResizeHandler(
       @QueueTrigger(name = "msg", queueName = "myqueue", connection = "MyQueueConnection")
           String msg,
-      final ExecutionContext context) {
+      @BlobInput(name = "file", dataType = "binary", path = "images/{queueTrigger}") byte[] file,
+      final ExecutionContext context)
+      throws IOException {
     context.getLogger().info("***** Queue Message = [" + msg + "] *****");
-    return;
+    byte[] resizeImage = ResizeImage.resize(file);
+    return resizeImage;
   }
 }
