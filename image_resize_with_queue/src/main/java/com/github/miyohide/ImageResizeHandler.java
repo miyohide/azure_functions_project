@@ -1,7 +1,6 @@
 package com.github.miyohide;
 
 import com.microsoft.azure.functions.ExecutionContext;
-import com.microsoft.azure.functions.OutputBinding;
 import com.microsoft.azure.functions.annotation.*;
 import org.springframework.cloud.function.adapter.azure.FunctionInvoker;
 
