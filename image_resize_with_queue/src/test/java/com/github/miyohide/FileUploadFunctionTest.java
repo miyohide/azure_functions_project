@@ -12,6 +12,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import java.util.function.Function;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 @ExtendWith(SpringExtension.class)
 @FunctionalSpringBootTest
@@ -51,6 +52,6 @@ class FileUploadFunctionTest {
         MessageBuilder.withPayload(blobURL)
             .setHeader("executionContext", new TestExecutionContext("test"))
             .build();
-    assertEquals(null, func.apply(m));
+    assertNull(func.apply(m));
   }
 }
