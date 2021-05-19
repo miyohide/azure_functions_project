@@ -6,17 +6,16 @@ import org.springframework.stereotype.Component;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.nio.file.Paths;
 import java.util.function.Function;
 
 @Component("FileUploadHandler")
 public class FileUploadFunction implements Function<Message<String>, String> {
   @Override
   public String apply(Message<String> m) {
-    URL url = null;
+    URL url;
     try {
       url = new URL(m.getPayload());
-      return Paths.get(url.getPath()).getFileName().toString();
+      return url.getPath().replaceFirst("^/images/", "");
     } catch (MalformedURLException e) {
       ExecutionContext context = m.getHeaders().get("executionContext", ExecutionContext.class);
       context.getLogger().severe(e.getLocalizedMessage());
