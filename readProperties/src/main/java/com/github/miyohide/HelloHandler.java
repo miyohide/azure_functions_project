@@ -4,7 +4,10 @@ import com.microsoft.azure.functions.*;
 import com.microsoft.azure.functions.annotation.AuthorizationLevel;
 import com.microsoft.azure.functions.annotation.FunctionName;
 import com.microsoft.azure.functions.annotation.HttpTrigger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.function.adapter.azure.FunctionInvoker;
+import org.springframework.stereotype.Component;
 
 public class HelloHandler extends FunctionInvoker<String, String> {
     @FunctionName("hello")
@@ -17,6 +20,8 @@ public class HelloHandler extends FunctionInvoker<String, String> {
             ExecutionContext context
             ) {
         context.getLogger().info("***** start http trigger *****");
+        String a = handleRequest("hoge", context);
+        context.getLogger().info("a = [" + a);
         return req.createResponseBuilder(HttpStatus.OK).body("hello, world").header("Content-Type", "application/json").build();
     }
 }
