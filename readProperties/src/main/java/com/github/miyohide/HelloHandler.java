@@ -18,7 +18,7 @@ public class HelloHandler extends FunctionInvoker<String, String> {
             ) {
         context.getLogger().info("***** start http trigger *****");
         String a = handleRequest("hoge", context);
-        context.getLogger().info("a = [" + a);
+        context.getLogger().info("a = [" + a + "]");
         return req.createResponseBuilder(HttpStatus.OK).body("hello, world").header("Content-Type", "application/json").build();
     }
 }

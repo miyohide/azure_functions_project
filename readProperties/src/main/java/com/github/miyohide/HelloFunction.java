@@ -1,20 +1,17 @@
 package com.github.miyohide;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
 import java.util.function.Function;
 
-@Configuration
-public class HelloFunction {
+@Component("hello")
+public class HelloFunction implements Function<String, String>{
     @Value("${miyohide}")
-    private String miyohide;
+    private String miyohide_data;
 
-    @Bean
-    public Function<String, String> hello() {
-        return info -> {
-            return miyohide;
-        };
+    @Override
+    public String apply(String s) {
+        return miyohide_data;
     }
 }
