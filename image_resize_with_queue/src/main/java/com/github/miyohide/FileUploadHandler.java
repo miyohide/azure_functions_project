@@ -11,7 +11,7 @@ public class FileUploadHandler extends FunctionInvoker<String, String> {
   @FunctionName("FileUploadHandler")
   public void pushToQueue(
       @EventGridTrigger(name = "event") EventSchema event,
-      @QueueOutput(name = "queue", queueName = "${app.queueName}", connection = "MyQueueConnection")
+      @QueueOutput(name = "queue", queueName = "myqueue", connection = "MyQueueConnection")
           OutputBinding<String> queue,
       final ExecutionContext context)
       throws IllegalArgumentException {

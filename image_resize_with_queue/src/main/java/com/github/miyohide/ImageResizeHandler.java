@@ -11,7 +11,7 @@ public class ImageResizeHandler extends FunctionInvoker<byte[], byte[]> {
   @StorageAccount("MyStorageAccount")
   @BlobOutput(name = "target", path = "thumbnails/s-{queueTrigger}", dataType = "binary")
   public byte[] imageResizeHandler(
-      @QueueTrigger(name = "msg", queueName = "${app.queueName}", connection = "MyQueueConnection")
+      @QueueTrigger(name = "msg", queueName = "myqueue", connection = "MyQueueConnection")
           String msg,
       @BlobInput(name = "file", dataType = "binary", path = "images/{queueTrigger}") byte[] file,
       final ExecutionContext context)
