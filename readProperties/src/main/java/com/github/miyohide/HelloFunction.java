@@ -7,11 +7,14 @@ import java.util.function.Function;
 
 @Component("hello")
 public class HelloFunction implements Function<String, String>{
-    @Value("${miyohide}")
-    private String miyohide_data;
+    @Value("${myapp.name}")
+    private String myapp_name;
+
+    @Value("${myapp.hoge}")
+    private String myapp_hoge;
 
     @Override
     public String apply(String s) {
-        return miyohide_data;
+        return myapp_name + " " + myapp_hoge;
     }
 }
