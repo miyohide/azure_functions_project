@@ -1,4 +1,8 @@
-# Azure Functions 勉強メモ
+# Azure Functions 勉強メモ用リポジトリ
+
+## 実施したこと
+
+以下のブログを参照
 
 - https://miyohide.hatenablog.com/entry/2021/03/17/061612
 - https://miyohide.hatenablog.com/entry/2021/03/22/212035
